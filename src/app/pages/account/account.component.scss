@@ -1,19 +1,9 @@
-html {
-    box-sizing: border-box;
-}
-  *, *:before, *:after {
-    box-sizing: inherit;
-}
-
-body {
-    font-family: 'Roboto', sans-serif;
-    width: 1680px;
-    margin: 0 auto;
-    overflow-x: hidden;
-    height: 100vh;
-}
-
-.button {
+p {
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .button {
     display: inline-block;
     padding: 10px 20px;
     font-size: 16px;
@@ -42,3 +32,4 @@ body {
     opacity: 0.5;
     cursor: not-allowed;
 }
+  

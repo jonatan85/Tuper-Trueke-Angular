@@ -1,0 +1,28 @@
+:host {
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.loading {
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    color: white;
+    height: 100vh;
+    opacity: 0.8;
+}
+.loading:hover {
+    transform: rotate(360deg);
+    transition: all 1s;
+}
+.loading__img{
+    background-image: url(../../../../images/loading/IMG_0830.jpeg);
+    background-position: center;
+    background-size: cover;
+    border-radius: 50%;
+    width: 25rem;
+    height: 25rem;
+}
+

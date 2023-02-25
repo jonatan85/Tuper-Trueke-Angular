@@ -1,0 +1,48 @@
+<header class="header">
+    <h1 class="header__title">Tuper Trueke</h1>
+    <nav class="header__nav">
+        <ul class="header__menu">
+            <li class="header__item">
+                <a 
+                    class="header__a"
+                    [routerLink]="['home']" 
+                >
+                    Home
+                </a>
+            </li>
+            <li class="header__item">
+                <a 
+                    class="header__a" 
+                    [routerLink]="['create-plates']"
+                >
+                    Crear Platos
+                </a>
+            </li>
+            <li class="header__item">
+                <a 
+                    class="header__a" 
+                    [routerLink]="['plate']"
+                >
+                    Recetas
+                </a>
+            </li>
+            <li class="header__item">
+                    <a 
+                        class="header__a"
+                        [routerLink]="['login']" 
+                    >
+                        Login
+                    </a>
+            </li>
+            <li class="header__item">
+                    <a
+                        *ngIf="isLogged"        
+                        class="header__a" 
+                        [routerLink]="['account']"
+                    >
+                        Account
+                    </a>
+            </li>
+        </ul>
+    </nav>
+</header>

@@ -1,0 +1,119 @@
+
+<form
+    *ngIf="platesForm"
+    class="form"
+    (submit)="createNewPlates()"
+    [formGroup]="platesForm"
+    name="plates"
+>
+   <div class="field-container">
+        <input
+            class="form__input"
+            placeholder="Nombre"
+            type="text"
+            required
+            formControlName="name"
+        >
+        <p
+            *ngIf="!platesForm.get('name')?.valid
+                && platesForm.get('name')?.dirty
+                && platesForm.get('name')?.errors?.['required']
+            "
+            class="input-error"
+        >El valor está requerido</p>
+        <p
+            *ngIf="!platesForm.get('name')?.valid
+                && platesForm.get('name')?.dirty
+                && platesForm.get('name')?.errors?.['pattern']
+            "
+            class="input-error"
+        >El nombre debe incluir solo letras</p>
+   </div>
+   <div class="field-container">
+        <input
+            class="form__input"
+            placeholder="Precio"
+            name="precio"
+            required
+            formControlName="price"
+        >
+        <p
+            *ngIf="!platesForm.get('price')?.valid
+                && platesForm.get('price')?.touched
+                && platesForm.get('price')?.errors?.['required']
+            "
+            class="input-error"
+        >El valor está requerido</p>
+        <p
+            *ngIf="!platesForm.get('price')?.valid
+                && platesForm.get('price')?.touched
+                && platesForm.get('price')?.errors?.['maxlength']
+            "
+            class="input-error"
+        >El valor excede la longitud máxima, 6 carácteres</p>
+    </div> 
+    <div class="field-container">
+        <input
+            class="form__input"
+            placeholder="Imagen"
+            name="image"
+            required
+            formControlName="image"
+        >
+        <p
+            *ngIf="!platesForm.get('image')?.valid && platesForm.get('image')?.touched"
+            class="input-error"
+        >El valor está requerido</p>
+    </div> 
+    <div class="field-container">
+        <select
+            class="form__input form__select"
+            name="ingredients"
+            required
+            formControlName="ingredients"
+        >
+            <option default value="">Ingredientes</option>
+            <option
+                *ngFor="let ingredients of dietsEl"
+                [value]="ingredients"
+            >{{ ingredients }}</option>
+        </select>
+        <p
+            *ngIf="
+                !platesForm.get('ingredients')?.valid
+                && platesForm.get('ingredients')?.touched
+                && platesForm.get('ingredients')?.errors?.['required']
+            "
+            class="input-error"
+        >El valor está requerido</p>
+        <p
+            *ngIf="
+                !platesForm.get('ingredients')?.valid
+                && platesForm.get('ingredients')?.touched
+                && platesForm.get('ingredients')?.errors?.['isBadIngredient']
+            "
+            class="input-error"
+        >Este cocinero es un flipado no se puede eleguir!</p>
+    </div> 
+    <div class="field-container">
+        <textarea
+            required
+            class="form__input form__textarea"
+            placeholder="Descripción"
+            name="description"
+            formControlName="description"
+        ></textarea>
+        <p
+            *ngIf="!platesForm.get('description')?.valid && platesForm.get('description')?.touched"
+            class="input-error"
+        >El valor está requerido</p>
+    </div>
+    <button
+        class="button"
+        type="submit"
+        [disabled]="!platesForm.valid"
+    >
+        {{ canEdit ? 'Editar producto' : 'Crear producto' }}
+    </button>
+</form>
+

@@ -1,0 +1,114 @@
+.plates__list {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 24px;
+    margin-left: 1rem;
+    gap: 3rem;
+}
+@media (min-width: 758px) {
+    .plates__list {
+        width: 75rem;
+        margin-left: 20rem;
+        display: grid;
+        grid-template-columns: repeat(2, 2fr);
+    }
+}    
+
+.plates__buscador {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+    gap: 5px;  
+}
+.plates__input {
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 200px;
+}  
+.plates__select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 200px;
+}
+.plates__select:focus{
+    outline: none;
+    border-color:#fff06f;
+    box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.2);
+}
+.plates__input:focus{
+    outline: none;
+    border-color:#fff06f;
+    box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.2);
+}
+.plates__option{
+    background-color: #fff;
+    color: #fff06f;
+    font-size: 16px;
+    padding: 10px;
+}
+@media (min-width: 500px) {
+    .plates__buscador {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin: 20px 0;  
+    }
+    .plates__input {
+        padding: 10px;
+        margin-right: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        width: 250px;
+    }  
+    .plates__select {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        width: 250px;
+    }
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border: 2px solid #fff06f;
+    border-radius: 5px;
+    color:#fff06f;
+    background-color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;   
+}
+.button:hover,
+.button:focus {
+    background-color:#fff06f;
+    color: black;
+    transform: translateY(-3px);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+}
+.button:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+.button[disabled] {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+.box__button {
+    margin-left: 10rem;
+}
+ 

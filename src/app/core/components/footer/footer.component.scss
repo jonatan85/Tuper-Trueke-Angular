@@ -1,0 +1,44 @@
+.footer {
+    background-image: url(../../../../images/footer/header_dsi_celiacdisease_therapy.jpg);
+    background-position: center;
+    background-size: cover;
+    padding: 5rem 0;
+    margin-top: 1rem;
+  }
+  .social-icons a {
+    color: #fff;
+    font-size: 20px;
+    margin-left: 10px;
+    text-decoration: none;
+  }
+  
+  .social-icons a:first-child {
+    margin-left: 0;
+  }
+  
+  .fa,
+  .fab {
+    display: inline-block;
+    font-size: inherit;
+    font-style: normal;
+    line-height: 1;
+    font-weight: 400;
+    text-align: center;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .fab.fa-github:before {
+    content: "\f09b";
+  }
+  
+  .fab.fa-linkedin:before {
+    content: "\f08c";
+  }
+  
+  
