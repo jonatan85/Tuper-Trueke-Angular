@@ -1,6 +1,6 @@
 
 export interface ApiPlates {
-    id: string;
+    _id: string;
     name: string;
     diets: PlatesDiets;
     img: string;

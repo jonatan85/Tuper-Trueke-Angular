@@ -22,16 +22,17 @@ export class DietsComponent {
   public removePlates() {
     this.onRemove.emit();
   }
+  
 
   public editPlates() {
     this.router.navigate(['create-plates'], { queryParams: {
-      id: this.plates?.id
+      id: this.plates?._id
     }});
   }
 
   public navigateToDetail() {
     if(this.plates) {
-      this.router.navigate(['detail', this.plates.id]);
+      this.router.navigate(['detail', this.plates._id]);
     }
   }
 }

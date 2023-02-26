@@ -20,7 +20,7 @@ export class DietsService {
           name: apiDiets.name,
           img: apiDiets.img,
           description: apiDiets.description,
-          id: apiDiets.id
+          id: apiDiets._id
         }));
       })
     );

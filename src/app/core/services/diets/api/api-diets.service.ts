@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-const DIETS_URL  = 'https://63d403a68d4e68c14eb7bdf8.mockapi.io/';
+const DIETS_URL  = 'https://trabajo-final-node.vercel.app';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +15,6 @@ export class ApiDietsService {
   ) { }
 
   public getApiDiets(): Observable<ApiDiets[]> {
-    return this.http.get<ApiDiets[]>(`${DIETS_URL}/diets`);
+    return this.http.get<ApiDiets[]>(`${DIETS_URL}/ingredients`);
   }
 }

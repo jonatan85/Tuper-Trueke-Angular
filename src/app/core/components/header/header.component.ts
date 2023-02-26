@@ -10,6 +10,7 @@ import { AuthService } from '../../services/auth/auth.service';
 export class HeaderComponent implements OnInit {
   
   public isLogged: boolean = false;
+  public isRegister: boolean = false;
 
   constructor(
     private router: Router,

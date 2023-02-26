@@ -20,10 +20,13 @@ export class PlatesService {
   ) { }
 
   
+
+  
   public getPlates(): Observable<Plates[]> {
     this.loadingService.showLoading();
     return this.apiPlatesService.getApiPlates().pipe(
       map((plates: ApiPlates[]) => {
+        console.log(plates);
         return plates.map((plates) => transformPlates(plates))
       }),
       tap(() => this.loadingService.hideLoading())
@@ -41,6 +44,8 @@ export class PlatesService {
       )
     ]).pipe(
       map(([apiPlates, diets]) => {
+        console.log(apiPlates, diets);
+        
         const selectedDiets = diets.find((diets) => diets.name === apiPlates.diets);
         console.log(diets);
         console.log(apiPlates);

@@ -7,7 +7,12 @@ export interface IUser {
     __v?: string
 }
 
-export interface IUserSingInResponse {
+export interface IUserSignInResponse {
     user: IUser;
     token: string;
+}
+
+export enum AuthError {
+    GENERIC = 0,
+    AUTH = 1
 }

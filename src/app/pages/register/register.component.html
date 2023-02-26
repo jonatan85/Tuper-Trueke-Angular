@@ -1,0 +1,19 @@
+<div class="container">
+    <form class="register"
+        *ngIf="registerForm"
+        [formGroup]="registerForm"
+        (submit)="registerUser()"
+    >
+        <input placeholder="Email" formControlName="email">
+        <input placeholder="Contraseña" type="password" formControlName="password">
+        <input placeholder="Nombre" type="text" formControlName="username">
+        <input placeholder="Apellido" type="text" formControlName="lastname">
+        <input placeholder="Años" type="number" formControlName="year">
+        <input placeholder="Ciudad" type="text" formControlName="country">
+        <button class="button" type="submit">Login</button>
+    </form>
+    <p
+        style="color: red;"
+        *ngIf="formError"
+    >{{ formError }}</p>
+</div>    

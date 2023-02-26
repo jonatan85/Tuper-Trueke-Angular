@@ -1,7 +1,7 @@
 import { Diets } from './../diets/diets.models';
 
 export interface Plates {
-    id: string;
+    _id: string;
     name: string;
     diets: Diets;
     img: string;

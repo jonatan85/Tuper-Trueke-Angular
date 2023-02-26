@@ -30,10 +30,10 @@ export class PlatesListComponent implements OnInit {
   public ngOnInit(): void {
     this.plates$ = this.platesService.getPlates();
   }
-
+  
   public removePlatesFromList(id?: string) {
     if (!id) { return; }
-    this.plates$ = this.platesService.deletePlate(id).pipe(
+    this.platesService.deletePlate(id).pipe(
       switchMap((diets) => {
         return this.platesService.getPlates();
       })

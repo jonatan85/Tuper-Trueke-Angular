@@ -4,5 +4,5 @@ export interface Diets {
     name: PlatesDiets;
     img?: string;
     description?: string;
-    id?: string;
+    _id?: string;
 }
