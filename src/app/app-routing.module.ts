@@ -3,9 +3,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ExitGuard } from './core/guards/exit.guard';
 import { AuthGuard } from './core/guards/auth.guard';
+import { ExitRegisterGuard} from './core/guards/exit-register.guard';
+
 import { ExampleComponent } from './example/example.component';
 import { RequestProductResolver } from './core/resolvers/request-product.resolver';
-
 
 const routes: Routes = [
   {
@@ -35,11 +36,11 @@ const routes: Routes = [
   },
   {
     path:'login',
-    loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule)
+    loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule),
   },
   {
     path:'register',
-    loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterModule)
+    loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterModule),
   },
   {
     path:'account',

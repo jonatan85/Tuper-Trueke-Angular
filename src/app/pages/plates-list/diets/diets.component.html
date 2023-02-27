@@ -20,11 +20,14 @@
                 >Detalle
             </button>
             <button
+                *ngIf="isLogged"
                 class="button"
                 (click)="removePlates()"
+                
                 >Eliminar
             </button>
             <button
+                *ngIf="isLogged"
                 class="button"
                 (click)="editPlates()"
                 >Editar

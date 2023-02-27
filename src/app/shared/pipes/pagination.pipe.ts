@@ -2,7 +2,8 @@ import { Plates } from 'src/app/core/services/plates/plates.models';
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'pagination'
+  name: 'pagination',
+  pure: false
 })
 export class PaginationPipe implements PipeTransform {
 

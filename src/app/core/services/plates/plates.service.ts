@@ -26,7 +26,7 @@ export class PlatesService {
     this.loadingService.showLoading();
     return this.apiPlatesService.getApiPlates().pipe(
       map((plates: ApiPlates[]) => {
-        console.log(plates);
+  
         return plates.map((plates) => transformPlates(plates))
       }),
       tap(() => this.loadingService.hideLoading())
@@ -44,35 +44,29 @@ export class PlatesService {
       )
     ]).pipe(
       map(([apiPlates, diets]) => {
-        console.log(apiPlates, diets);
-        
-        const selectedDiets = diets.find((diets) => diets.name === apiPlates.diets);
-        console.log(diets);
-        console.log(apiPlates);
-        
-        
-        
-        
+        const selectedDiets = diets.find((diets) => diets.name === apiPlates.diets); 
         return transformPlates(apiPlates, selectedDiets);
       })
     );
   }
 
   public deletePlate(id: string): Observable<Plates> {
-    return this.apiPlatesService.deleteApiPlates(id).pipe(
-      map((plate) => transformPlates(plate))
+    console.log(id);
+    return this.apiPlatesService.deleteApiPlates(id).pipe(  
+      map((plates) => transformPlates(plates))
     )
   }
 
+
   public createPlates(body: Plates): Observable<Plates> {
     return this.apiPlatesService.createApiPlates(body).pipe(
-      map((plate) => transformPlates(plate))
+      map((plates) => transformPlates(plates))
     );
   }
 
   public editPlates(id: string, body: Plates): Observable<Plates> {
     return this.apiPlatesService.editApiPlates(id, body).pipe(
-      map((plate) => transformPlates(plate))
+      map((plates) => transformPlates(plates))
     );
   }
 }

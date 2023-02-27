@@ -28,6 +28,7 @@
             </li>
             <li class="header__item">
                     <a 
+                        *ngIf="isAccount" 
                         class="header__a"
                         [routerLink]="['login']" 
                     >
@@ -44,13 +45,14 @@
                     </a>
             </li>
             <li class="header__item">
-                    <a        
+                    <a         
                         class="header__a" 
                         [routerLink]="['register']"
                     >
                         Registro
                     </a>
             </li>
+    
         </ul>
     </nav>
 </header>

@@ -20,7 +20,6 @@ export class RequestProductResolver implements Resolve<Plates | null> {
   
   
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Plates | null> { 
-    console.log(route, state);
 
     const id = route.params['id']
    

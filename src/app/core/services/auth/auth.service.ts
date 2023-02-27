@@ -15,6 +15,7 @@ const TOKEN_KEY = 'user-token';
 export class AuthService {
 
   public userLogged$: ReplaySubject<boolean> = new ReplaySubject<boolean>(1);
+  public userLoggout$: ReplaySubject<boolean> = new ReplaySubject<boolean>(1);
 
   constructor(
     private http: HttpClient,
@@ -25,10 +26,13 @@ export class AuthService {
 
   public login() {
     this.userLogged$.next(true);
+    this.userLoggout$.next(true);
   }
     
   public logout() {
     this.userLogged$.next(false);
+    this.userLoggout$.next(false);
+    
   }
 
   public loginJWT(user: IUser): Observable<IUserSignInResponse> {

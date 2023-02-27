@@ -1,27 +1,36 @@
+import { PlatesService } from 'src/app/core/services/plates/plates.service';
 import { Plates } from '../../../core/services/plates/plates.models';
 import { Router } from '@angular/router';
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/core/services/auth/auth.service';
 
 @Component({
   selector: 'app-diets',
   templateUrl: './diets.component.html',
   styleUrls: ['./diets.component.scss']
 })
-export class DietsComponent {
+export class DietsComponent implements OnInit {
   @Input() public plates?: Plates;
   @Output() public onRemove: EventEmitter<void> = new EventEmitter<void>();
+  public isLogged: boolean = false;
 
 
-  constructor(private router: Router){}
+  constructor(
+    private router: Router,
+    private auth: AuthService,
+    private platesService: PlatesService
+    ){}
 
-  public pruebas(){
-    console.log(this.plates?.diets);
+  public ngOnInit(): void {
+    this.auth.userLogged$.subscribe((isLogged) => this.isLogged = isLogged);
     
   }
 
   public removePlates() {
     this.onRemove.emit();
   }
+
+
   
 
   public editPlates() {

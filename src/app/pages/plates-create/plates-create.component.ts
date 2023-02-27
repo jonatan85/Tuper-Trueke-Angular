@@ -54,7 +54,6 @@ export class PlatesCreateComponent {
     });
 
     this.platesForm?.get('image')?.statusChanges.subscribe((status) => {
-      console.log(status);
     });
   }
   public createNewForm(plates?: Plates) {
@@ -63,7 +62,7 @@ export class PlatesCreateComponent {
       price: new FormControl(plates?.price ||'', [Validators.required, Validators.maxLength(6)]),
       description: new FormControl(plates?.description ||'', [Validators.required]),
       image: new FormControl(plates?.img || '', [Validators.required]),              
-      ingredients: new FormControl(plates?.diets || '', [Validators.required, isNotBadDiets()]),
+      ingredients: new FormControl(plates?.diets || '', [Validators.required]),
     });
   }
 

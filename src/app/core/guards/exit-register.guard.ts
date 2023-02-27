@@ -1,23 +1,19 @@
-import { PlatesCreateComponent } from './../../pages/plates-create/plates-create.component';
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanDeactivate, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
+import { RegisterComponent } from './../../pages/register/register.component';
+
 
 @Injectable({
   providedIn: 'root'
 })
-
-export class ExitGuard implements CanDeactivate<PlatesCreateComponent> {
+export class ExitRegisterGuard implements CanDeactivate<unknown> {
   canDeactivate(
-    component: PlatesCreateComponent,
+    component: RegisterComponent,
     ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if(component?.isPlatesCreate || !component?.platesForm?.dirty) {
+    if(component?.isRegister || !component?.registerForm?.dirty) {
       return true;
     }
     return window.confirm('Esta seguro de querer salir? No se guardara los datos de el formulario');
   }
 }
-
-
-
-

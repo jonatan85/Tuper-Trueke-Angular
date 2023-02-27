@@ -22,7 +22,7 @@ export class LoginComponent {
   ) {
     this.loginForm = this.fb.group({
       email: new FormControl('', [Validators.email]),
-      password: new FormControl('')
+      password: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(8)])
     });
   }
 
@@ -31,7 +31,6 @@ export class LoginComponent {
     const user: IUser = this.loginForm.value;
     this.auth.loginJWT(user).subscribe({
       next: (res) => {
-        console.log(res);
         this.loginForm?.reset();
       },
       error: (err) => {
@@ -39,7 +38,7 @@ export class LoginComponent {
         this.loginForm?.reset();
       },
     });
-    this.router.navigate(['account']);
+    this.router.navigate(['home']);
   }
 }
 

@@ -4,7 +4,6 @@ import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { Router } from '@angular/router';
 import { Register } from 'src/app/core/services/auth/models/register.models';
 
-
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -13,6 +12,7 @@ import { Register } from 'src/app/core/services/auth/models/register.models';
 export class RegisterComponent {
   public registerForm?: FormGroup;
   public formError?: string;
+  public isRegister: boolean = false;
 
   constructor(
     private auth: AuthService,
@@ -21,11 +21,11 @@ export class RegisterComponent {
   ) {
     this.registerForm = this.fb.group({
       email: new FormControl('', [Validators.email]),
-      password: new FormControl(''),
-      username: new FormControl(''),
-      lastname: new FormControl(''),
-      year: new FormControl(''),
-      country: new FormControl(''),
+      password: new FormControl('', ),
+      username: new FormControl('', ),
+      lastname: new FormControl('',),
+      year: new FormControl('', ),
+      country: new FormControl('', ),
     });
   }
 
@@ -34,7 +34,6 @@ export class RegisterComponent {
     const user: Register = this.registerForm.value;
     this.auth.register(user).subscribe({
       next: (res) => {
-        console.log(res);
         this.registerForm?.reset();
       },
       error: (err) => {
@@ -42,6 +41,7 @@ export class RegisterComponent {
         this.registerForm?.reset();
       },
     });
-    this.router.navigate(['account']);
+    this.isRegister = true;
+    this.router.navigate(['login']);
   }
 }

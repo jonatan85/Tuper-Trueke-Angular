@@ -10,7 +10,8 @@ import { AuthService } from '../../services/auth/auth.service';
 export class HeaderComponent implements OnInit {
   
   public isLogged: boolean = false;
-  public isRegister: boolean = false;
+  public isAccount: boolean = true;
+
 
   constructor(
     private router: Router,
@@ -24,4 +25,5 @@ export class HeaderComponent implements OnInit {
   public navigateToNotFound() {
     this.router.navigate(['no-existe', 'nada']);
   }
+  
 }

@@ -23,18 +23,19 @@ export class PlatesListComponent implements OnInit {
   public search: string = '';
   public currentPage: number = 1;
   public itemsPerPage: number = 5;
-  public diets: Diets[] = [];
+  public diet: Diets[] = [];
   
   constructor(private platesService: PlatesService) {}
 
   public ngOnInit(): void {
     this.plates$ = this.platesService.getPlates();
   }
+
   
-  public removePlatesFromList(id?: string) {
-    if (!id) { return; }
-    this.platesService.deletePlate(id).pipe(
-      switchMap((diets) => {
+  public removePlatesFromList(_id?: string) {
+    if (!_id) { return; }
+    this.platesService.deletePlate(_id).pipe(
+      switchMap((diet) => {
         return this.platesService.getPlates();
       })
     );  
