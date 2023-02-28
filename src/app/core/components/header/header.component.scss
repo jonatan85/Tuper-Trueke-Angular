@@ -9,6 +9,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    text-decoration: none;
+    font-size: 3rem;
 }
 @media (min-width: 768px) {
     .header__title {
