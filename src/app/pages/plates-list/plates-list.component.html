@@ -52,7 +52,7 @@
         <button
             class="button"
             (click)='nextPage()'
-            [ngStyle]="pagePagination >= platesEl.length ? {'display': 'none'}: null"
+            [ngStyle]="pagePagination >= 28 ? {'display': 'none'}: null"
             [disabled]="(plate| pagination:pagePagination:search).length"
         >
             Siguientes
