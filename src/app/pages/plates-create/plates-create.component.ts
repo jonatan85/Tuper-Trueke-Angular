@@ -19,7 +19,6 @@ import { PlatesService } from 'src/app/core/services/plates/plates.service';
 export class PlatesCreateComponent {
   public platesForm?: FormGroup;
   public dietsEl: PlatesDiets [] = diets;
-  public urlImg: string = '';
   public canEdit: boolean = false;
   public platesId?: string;
   public isPlatesCreate: boolean = false;
@@ -51,22 +50,21 @@ export class PlatesCreateComponent {
 
 
   public ngOnInit(): void {
-    this.platesForm?.get('image')?.valueChanges.subscribe((value) => {
+    this.platesForm?.get('img')?.valueChanges.subscribe((value) => {
       if (!value) { return; }
-      this.urlImg = value;
       this.messageService.setMessage(value);
     });
-    
-    this.auth.userLogged$.subscribe((isLogged) => this.isLogged = isLogged);
-    this.platesForm?.get('image')?.statusChanges.subscribe((status) => {
+    this.platesForm?.get('img')?.statusChanges.subscribe((status) => {
+      console.log(status);
     });
+    this.auth.userLogged$.subscribe((isLogged) => this.isLogged = isLogged);
   }
   public createNewForm(plates?: Plates) {
     this.platesForm = this.fb.group({
       name: new FormControl(plates?.name || '', [Validators.required, Validators.maxLength(15)]),
       price: new FormControl(plates?.price ||'', [Validators.required, Validators.maxLength(3)]),
       description: new FormControl(plates?.description ||'', [Validators.required]),
-      image: new FormControl(plates?.img || '', [Validators.required]),              
+      img: new FormControl(plates?.img || '', [Validators.required]),              
       diets: new FormControl(plates?.diets || '', [Validators.required]),
     });
   }

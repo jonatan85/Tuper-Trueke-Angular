@@ -6,7 +6,6 @@ export interface Plates {
     diets: Diets;
     img: string;
     price: string;
-    count: string;
     description: string;
     
 }
