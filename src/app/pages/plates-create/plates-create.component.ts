@@ -20,6 +20,7 @@ export class PlatesCreateComponent {
   public platesForm?: FormGroup;
   public dietsEl: PlatesDiets [] = diets;
   public canEdit: boolean = false;
+  public urlImg: string = '';
   public platesId?: string;
   public isPlatesCreate: boolean = false;
   public isLogged: boolean = false;
@@ -52,6 +53,7 @@ export class PlatesCreateComponent {
   public ngOnInit(): void {
     this.platesForm?.get('img')?.valueChanges.subscribe((value) => {
       if (!value) { return; }
+      this.urlImg = value;
       this.messageService.setMessage(value);
     });
     this.platesForm?.get('img')?.statusChanges.subscribe((status) => {

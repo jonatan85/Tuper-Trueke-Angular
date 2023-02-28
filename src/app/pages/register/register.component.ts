@@ -25,7 +25,7 @@ export class RegisterComponent {
       password: new FormControl('', ),
       username: new FormControl('', ),
       lastname: new FormControl('',),
-      year: new FormControl('', ),
+      year: new FormControl('', [Validators.required, Validators.maxLength(3)] ),
       country: new FormControl('', ),
     });
   }
