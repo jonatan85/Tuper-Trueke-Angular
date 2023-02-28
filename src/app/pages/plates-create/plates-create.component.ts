@@ -7,7 +7,7 @@ import { MessageService } from 'src/app/core/services/message/message.service';
 import { Plates } from 'src/app/core/services/plates/plates.models';
 import { PlatesDiets } from 'src/app/core/services/plates/api/api-plates.models';
 import { PlatesService } from 'src/app/core/services/plates/plates.service';
-import { isNotBadDiets } from './validators/material.validator';
+
 
 @Component({
   selector: 'app-plates-create',
@@ -58,12 +58,11 @@ export class PlatesCreateComponent {
   }
   public createNewForm(plates?: Plates) {
     this.platesForm = this.fb.group({
-      name: new FormControl(plates?.name || '', [Validators.required]),
-      price: new FormControl(plates?.price ||'', [Validators.required, Validators.maxLength(6)]),
+      name: new FormControl(plates?.name || '', [Validators.required, Validators.maxLength(15)]),
+      price: new FormControl(plates?.price ||'', [Validators.required, Validators.maxLength(3)]),
       description: new FormControl(plates?.description ||'', [Validators.required]),
       image: new FormControl(plates?.img || '', [Validators.required]),              
       diets: new FormControl(plates?.diets || '', [Validators.required]),
-      
     });
   }
 

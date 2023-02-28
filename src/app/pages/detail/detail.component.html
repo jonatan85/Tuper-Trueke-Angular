@@ -2,8 +2,8 @@
 
     <div class="card" *ngIf="plates; else productNotFound">
         <img  [src]="plates.img">
-        <p class="card__p">Name: {{ plates.name }}</p>
-        <p class="card__p">Description: {{ plates.description }}</p>
+        <p class="card__p">Nombre: {{ plates.name }}</p>
+        <p class="card__p">Descripción: {{ plates.description }}</p>
         <p class="card__p">Precio por Ración: {{ plates.price }}</p>
         <div class="card__ingredients">
             <h3 class="card__ingredients_h3">Tipo de Dieta: {{ plates.diets.name }}</h3>

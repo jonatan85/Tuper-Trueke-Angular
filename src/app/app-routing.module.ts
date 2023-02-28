@@ -1,9 +1,7 @@
-import { LoadingComponent } from './core/components/loading/loading.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ExitGuard } from './core/guards/exit.guard';
 import { AuthGuard } from './core/guards/auth.guard';
-import { ExitRegisterGuard} from './core/guards/exit-register.guard';
 
 import { ExampleComponent } from './example/example.component';
 import { RequestProductResolver } from './core/resolvers/request-product.resolver';

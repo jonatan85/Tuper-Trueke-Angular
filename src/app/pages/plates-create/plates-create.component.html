@@ -92,15 +92,6 @@
                     class="input-error"
                     >El valor está requerido
                 </p>
-                <p
-                    *ngIf="
-                    !platesForm.get('diets')?.valid
-                    && platesForm.get('diets')?.touched
-                    && platesForm.get('diets')?.errors?.['isBadIngredient']
-                    "
-                    class="input-error"
-                    >Este cocinero es un flipado no se puede eleguir!
-                </p>
             </div> 
             <div class="field-container">
                 <textarea

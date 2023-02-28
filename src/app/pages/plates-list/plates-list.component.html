@@ -1,25 +1,21 @@
 <div class="container">
-
-    
-     <div class="plates__buscador">
-            <input 
-                class="plates__input" 
-                placeholder="Filtra por nombre" 
-                [(ngModel)]="platesName"
-            >
-            <select
-                class="plates__select"
-                name="Dietas"
-                required
-                [(ngModel)]="platesDiets"
-            >
+    <div class="plates__buscador">
+        <input
+            class="plates__input" 
+            placeholder="Filtra por nombre" 
+            [(ngModel)]="platesName">
+        <select
+            class="plates__select"
+            name="materials"
+            required
+            [(ngModel)]="platesIngredient"
+        >
             <option default value="">Todas las Dietas</option>
             <option
                 class="plates__option"
                 *ngFor="let plate of platesEl"
                 [value]="plate"
-                >{{ plate }}
-            </option>
+            >{{ plate }}</option>
         </select>
     </div>
 
@@ -27,31 +23,31 @@
         *ngIf="plates$"
         class="plates__list"
     >
-        <app-diets
-            class="plates__app"
-            *ngFor="let platesEl of plates$ |async |filter:platesName:platesDiets | pagination: pagePagination:search"
-            [plates]="platesEl"
-            (onRemove)="removePlatesFromList(platesEl._id)"
-        >
-        </app-diets>
-        </div>
-        <div class="box__button">
-            <button
-                class="button"
-                (click)='prevPage()'
-            >
-                Anteriores
-        </button>
-            &nbsp;
+    <app-diets
+        *ngFor="let platesEl of plates$ |async |filter:platesName:platesIngredient | pagination: pagePagination:search "
+        [plates]="platesEl"
+        (onRemove)="removePlatesFromList(platesEl._id)"
+    >
+    </app-diets>
+
+    </div>
+
+    <div>
         <button
             class="button"
-            [ngStyle]="pagePagination >= platesEl.length ? {'display': 'none'}: null"
+            (click)='prevPage()'
+        >
+            Anteriores
+        </button>
+        &nbsp;
+        <button
+            class="button"
             (click)='nextPage()'
+            [ngStyle]="pagePagination >= platesEl.length ? {'display': 'none'}: null"
+            [disabled]="(plate| pagination:pagePagination:search).length"
         >
             Siguientes
         </button>
     </div>
+
 </div>
-
-
-
