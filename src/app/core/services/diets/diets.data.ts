@@ -12,5 +12,6 @@ export const diets: PlatesDiets[] = [
     'Italiana',
     'Francesa',
     'Española',
-    'Vasca'
+    'Vasca',
+    'MisPlatos',
 ];

@@ -62,7 +62,8 @@ export class PlatesCreateComponent {
       price: new FormControl(plates?.price ||'', [Validators.required, Validators.maxLength(6)]),
       description: new FormControl(plates?.description ||'', [Validators.required]),
       image: new FormControl(plates?.img || '', [Validators.required]),              
-      ingredients: new FormControl(plates?.diets || '', [Validators.required]),
+      diets: new FormControl(plates?.diets || '', [Validators.required]),
+      
     });
   }
 

@@ -25,6 +25,7 @@ export class PlatesListComponent implements OnInit {
   public itemsPerPage: number = 5;
   public diet: Diets[] = [];
   
+  
   constructor(private platesService: PlatesService) {}
 
   public ngOnInit(): void {

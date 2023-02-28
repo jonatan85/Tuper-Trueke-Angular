@@ -1,5 +1,6 @@
 
 export interface ApiPlates {
+    createdAt: string;
     _id: string;
     name: string;
     diets: PlatesDiets;
@@ -7,8 +8,10 @@ export interface ApiPlates {
     price: string;
     count: string;
     description: string;
+    misPlatos: string;
     
 }
+
 
 export type PlatesDiets = 
 |'China'
@@ -23,5 +26,6 @@ export type PlatesDiets =
 |'Francesa'
 |'Española'
 |'Vasca'
+|'MisPlatos'
 ;
  

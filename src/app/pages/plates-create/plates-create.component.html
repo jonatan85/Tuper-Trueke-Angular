@@ -72,31 +72,31 @@
             <div class="field-container">
                 <select
                         class="form__input form__select"
-                        name="ingredients"
+                        name="diets"
                         required
-                        formControlName="ingredients"
+                        formControlName="diets"
                 >
-                    <option default value="">Ingredientes</option>
+                    <option default value="">Dietas</option>
                     <option
-                        *ngFor="let ingredients of dietsEl"
-                        [value]="ingredients"
-                        >{{ ingredients }}
+                        *ngFor="let diets of dietsEl"
+                        [value]="diets"
+                        >{{ diets }}
                     </option>
                 </select>
                 <p
                     *ngIf="
-                    !platesForm.get('ingredients')?.valid
-                    && platesForm.get('ingredients')?.touched
-                    && platesForm.get('ingredients')?.errors?.['required']
+                    !platesForm.get('diets')?.valid
+                    && platesForm.get('diets')?.touched
+                    && platesForm.get('diets')?.errors?.['required']
                     "
                     class="input-error"
                     >El valor está requerido
                 </p>
                 <p
                     *ngIf="
-                    !platesForm.get('ingredients')?.valid
-                    && platesForm.get('ingredients')?.touched
-                    && platesForm.get('ingredients')?.errors?.['isBadIngredient']
+                    !platesForm.get('diets')?.valid
+                    && platesForm.get('diets')?.touched
+                    && platesForm.get('diets')?.errors?.['isBadIngredient']
                     "
                     class="input-error"
                     >Este cocinero es un flipado no se puede eleguir!
