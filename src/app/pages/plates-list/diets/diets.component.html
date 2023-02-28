@@ -7,7 +7,7 @@
             <img class="plates__img"  [src]="plates.img">
             <div class="card__content">
                 <h3
-                class="card__title">{{plates.name}}
+                class="card__title">{{plates.name | uppercase}}
             </h3>
             <p class="card__id">Tipo de Dieta: {{plates.diets.name}}</p>
             <p class="card__id"> Precio: {{plates.price}}</p>
