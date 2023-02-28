@@ -1,19 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { isEmpty } from 'rxjs';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { IUser } from 'src/app/core/services/auth/models/auth.models';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
 
   public loginForm?: FormGroup;
   public formError?: string;
+  public isLogged: boolean = false;
+
 
   constructor(
     private auth: AuthService,
@@ -21,9 +24,13 @@ export class LoginComponent {
     private fb: FormBuilder
   ) {
     this.loginForm = this.fb.group({
-      email: new FormControl('', [Validators.email]),
+      email: new FormControl('', [Validators.email, ]),
       password: new FormControl('', [Validators.required, Validators.minLength(4), Validators.maxLength(8)])
     });
+  }
+
+  public ngOnInit(): void {
+    this.auth.userLogged$.subscribe((isLogged) => this.isLogged = isLogged);
   }
 
   public loginUser() {
@@ -39,6 +46,13 @@ export class LoginComponent {
       },
     });
     this.router.navigate(['home']);
+  }
+
+  public navigateToRegister() {
+    this.router.navigate(['register']);
+  }
+  public navigateToLogout() {
+    this.router.navigate(['account']);
   }
 }
 

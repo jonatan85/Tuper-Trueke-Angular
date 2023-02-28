@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { diets } from 'src/app/core/services/diets/diets.data';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -22,13 +23,15 @@ export class PlatesCreateComponent {
   public canEdit: boolean = false;
   public platesId?: string;
   public isPlatesCreate: boolean = false;
+  public isLogged: boolean = false;
 
   constructor(
     private fb: FormBuilder,
     private messageService: MessageService,
     private activatedRoute: ActivatedRoute,
     private platesService: PlatesService,
-    private router: Router
+    private router: Router,
+    private auth: AuthService
   ) {
     this.activatedRoute.queryParams.pipe(
       map((queryParams) => queryParams['id']),
@@ -46,13 +49,15 @@ export class PlatesCreateComponent {
     });
   }
 
-  public ngOnInit() {
+
+  public ngOnInit(): void {
     this.platesForm?.get('image')?.valueChanges.subscribe((value) => {
       if (!value) { return; }
       this.urlImg = value;
       this.messageService.setMessage(value);
     });
-
+    
+    this.auth.userLogged$.subscribe((isLogged) => this.isLogged = isLogged);
     this.platesForm?.get('image')?.statusChanges.subscribe((status) => {
     });
   }
@@ -76,6 +81,10 @@ export class PlatesCreateComponent {
       this.platesForm?.reset();
       this.router.navigate(['plates-list']);
     });
+  }
+
+  public navigateToLogout() {
+    this.router.navigate(['account']);
   }
 }
 

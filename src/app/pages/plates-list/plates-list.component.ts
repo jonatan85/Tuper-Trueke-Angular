@@ -1,3 +1,5 @@
+import { AuthService } from 'src/app/core/services/auth/auth.service';
+import { Router } from '@angular/router';
 import { PlatesService } from 'src/app/core/services/plates/plates.service';
 import { diets } from '../../core/services/diets/diets.data';
 import { Component, OnInit } from '@angular/core';
@@ -18,29 +20,28 @@ export class PlatesListComponent implements OnInit {
   public platesName : string = '';
   public plate : Plates[] = [];
   public platesIngredient?: PlatesDiets;
-  // Este es para la apgiacion de angular.
   public page!: number;
   public platesEl : PlatesDiets[] = diets;
-  // Para la paginacion es para calcular el numero de elementos en la pagiancion.
   public pagePagination: number = 0;
-  // Para el buscador.
   public search: string = '';
-
-  // Paginacion2.
   public currentPage: number = 1;
   public itemsPerPage: number = 5;
+  public isLogged: boolean = false;
   
 
   
 
-  constructor(private platesService: PlatesService) {}
+  constructor(
+    private platesService: PlatesService,
+    private router: Router,
+    private auth: AuthService,
+    ) {}
 
 
   public ngOnInit(): void {
     this.plates$ = this.platesService.getPlates();
+    this.auth.userLogged$.subscribe((isLogged) => this.isLogged = isLogged);
   }
-
-
 
   public removePlatesFromList(id?: string) {
     if (!id) { return; }
@@ -51,28 +52,23 @@ export class PlatesListComponent implements OnInit {
     );
   }
 
-  // Para la siguiente pagina.
   nextPage() {
     this.pagePagination += 5;
   }
 
-  // Para la pagina anterior.
   prevPage() {
-    // Le indicamos a el boton que se desactive si es menor a cero.
     if( this.pagePagination > 0 )
     this.pagePagination -= 5;
   }
 
-  // Para el buscador.
   onSearchPlates(search: string){
-    // Para iniciar desde la primera pagina.
     this.pagePagination = 0;
     this.search = search;
   }
  
-  
-
- 
+  public navigateToLogout() {
+    this.router.navigate(['account']);
+  }
 }
 
   

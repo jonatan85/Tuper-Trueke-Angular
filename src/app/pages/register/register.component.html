@@ -1,3 +1,13 @@
+<div>
+    <button 
+        *ngIf="isLogged" 
+        class="button"
+        (click)="navigateToLogout()"
+        >
+        Logout.
+    </button> 
+</div>
+
 <div class="container">
     <form class="register"
         *ngIf="registerForm"

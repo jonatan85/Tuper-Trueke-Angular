@@ -1,15 +1,35 @@
+<div>
+    <button 
+        *ngIf="isLogged" 
+        class="button"
+        (click)="navigateToLogout()"
+        >
+        Logout.
+    </button> 
+</div>
 <div class="container">
-    <form class="login"
-        *ngIf="loginForm"
-        [formGroup]="loginForm"
-        (submit)="loginUser()"
-    >
-        <input placeholder="Email" formControlName="email">
-        <input placeholder="Contraseña" type="password" formControlName="password">
-        <button class="button" type="submit">Login</button>
-    </form>
-    <p
+    <div>
+        <form class="login"
+            *ngIf="loginForm"
+            [formGroup]="loginForm"
+            (submit)="loginUser()"
+            >
+            <input placeholder="Email" formControlName="email">
+            <input placeholder="Contraseña" type="password" formControlName="password">
+            <button class="button" type="submit">Login</button>
+        </form>
+        <p
         style="color: red;"
         *ngIf="formError"
-    >{{ formError }}</p>
+        >{{ formError }}
+        </p>
+    </div>
+    <div>
+        <button 
+            class="button"
+            (click)="navigateToRegister()"
+            >
+            Registrate si no lo Estas.
+        </button> 
+    </div>
 </div>

@@ -13,6 +13,7 @@ export class RegisterComponent {
   public registerForm?: FormGroup;
   public formError?: string;
   public isRegister: boolean = false;
+  public isLogged: boolean = false;
 
   constructor(
     private auth: AuthService,
@@ -29,6 +30,10 @@ export class RegisterComponent {
     });
   }
 
+  public ngOnInit(): void {
+    this.auth.userLogged$.subscribe((isLogged) => this.isLogged = isLogged);
+  }
+
   public registerUser() {
     if (!this.registerForm?.valid) { return; }
     const user: Register = this.registerForm.value;
@@ -43,5 +48,9 @@ export class RegisterComponent {
     });
     this.isRegister = true;
     this.router.navigate(['login']);
+  }
+
+  public navigateToLogout() {
+    this.router.navigate(['account']);
   }
 }

@@ -1,4 +1,3 @@
-import { PlatesService } from 'src/app/core/services/plates/plates.service';
 import { Plates } from '../../../core/services/plates/plates.models';
 import { Router } from '@angular/router';
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
@@ -18,7 +17,6 @@ export class DietsComponent implements OnInit {
   constructor(
     private router: Router,
     private auth: AuthService,
-    private platesService: PlatesService
     ){}
 
   public ngOnInit(): void {
@@ -44,4 +42,5 @@ export class DietsComponent implements OnInit {
       this.router.navigate(['detail', this.plates._id]);
     }
   }
+
 }

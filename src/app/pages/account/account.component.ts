@@ -17,6 +17,5 @@ export class AccountComponent {
   logoutUser() {
     this.auth.logoutJWT();
       this.router.navigate(['home']);
-    
   }
 }
