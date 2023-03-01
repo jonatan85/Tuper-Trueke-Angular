@@ -29,8 +29,8 @@ const routes: Routes = [
   {
     path: 'create-plates',
     loadChildren: () => import('./pages/plates-create/plates-create.module').then(m => m.PlatesCreateModule),
-    canActivate: [AuthGuard],
-    canDeactivate: [ExitGuard]
+    // canActivate: [AuthGuard],
+    // canDeactivate: [ExitGuard]
   },
   {
     path:'login',

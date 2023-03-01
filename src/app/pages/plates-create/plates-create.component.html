@@ -1,12 +1,4 @@
-<div>
-    <button 
-        *ngIf="isLogged" 
-        class="button"
-        (click)="navigateToLogout()"
-        >
-        Logout.
-    </button> 
-</div>
+
 
 <div class="container">
 
@@ -62,19 +54,19 @@
                     && platesForm.get('price')?.errors?.['maxlength']
                     "
                     class="input-error"
-                    >El valor excede la longitud máxima, 6 carácteres
+                    >El valor excede la longitud máxima, 3 carácteres
                 </p>
             </div> 
             <div class="field-container">
                 <input
                     class="form__input"
                     placeholder="Imagen"
-                    name="image"
+                    name="img"
                     required
-                    formControlName="image"
+                    formControlName="img"
                 >
                 <p
-                    *ngIf="!platesForm.get('image')?.valid && platesForm.get('image')?.touched"
+                    *ngIf="!platesForm.get('img')?.valid && platesForm.get('img')?.touched"
                     class="input-error"
                     >El valor está requerido
                 </p>
@@ -126,6 +118,15 @@
                 {{ canEdit ? 'Editar producto' : 'Crear producto' }}
             </button>
     </form>
+
+    <div
+    class="img__container"
+    [ngStyle]="{
+        'background-img': 'url(' + urlImg + ')',
+        'object-fit': 'contain'
+    }"
+>
+</div>
 
 
 </div>

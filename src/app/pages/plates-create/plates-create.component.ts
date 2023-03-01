@@ -16,7 +16,8 @@ import { PlatesService } from 'src/app/core/services/plates/plates.service';
   styleUrls: ['./plates-create.component.scss']
 })
 
-export class PlatesCreateComponent {
+export class PlatesCreateComponent implements OnInit{
+
   public platesForm?: FormGroup;
   public dietsEl: PlatesDiets [] = diets;
   public canEdit: boolean = false;
@@ -52,6 +53,8 @@ export class PlatesCreateComponent {
 
   public ngOnInit(): void {
     this.platesForm?.get('img')?.valueChanges.subscribe((value) => {
+      console.log(value);
+      
       if (!value) { return; }
       this.urlImg = value;
       this.messageService.setMessage(value);
@@ -63,7 +66,7 @@ export class PlatesCreateComponent {
   }
   public createNewForm(plates?: Plates) {
     this.platesForm = this.fb.group({
-      name: new FormControl(plates?.name || '', [Validators.required, Validators.maxLength(15)]),
+      name: new FormControl(plates?.name || '', [Validators.required]),
       price: new FormControl(plates?.price ||'', [Validators.required, Validators.maxLength(3)]),
       description: new FormControl(plates?.description ||'', [Validators.required]),
       img: new FormControl(plates?.img || '', [Validators.required]),              
@@ -87,4 +90,6 @@ export class PlatesCreateComponent {
     this.router.navigate(['account']);
   }
 }
+
+
 
