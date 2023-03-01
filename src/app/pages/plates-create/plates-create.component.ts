@@ -4,7 +4,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map, of, switchMap } from 'rxjs';
-import { MessageService } from 'src/app/core/services/message/message.service';
 import { Plates } from 'src/app/core/services/plates/plates.models';
 import { PlatesDiets } from 'src/app/core/services/plates/api/api-plates.models';
 import { PlatesService } from 'src/app/core/services/plates/plates.service';
@@ -28,7 +27,6 @@ export class PlatesCreateComponent implements OnInit{
 
   constructor(
     private fb: FormBuilder,
-    private messageService: MessageService,
     private activatedRoute: ActivatedRoute,
     private platesService: PlatesService,
     private router: Router,
@@ -54,24 +52,20 @@ export class PlatesCreateComponent implements OnInit{
   public ngOnInit(): void {
     this.platesForm?.get('img')?.valueChanges.subscribe((value) => {
       console.log(value);
-      
       if (!value) { return; }
       this.urlImg = value;
-      this.messageService.setMessage(value);
-    });
-    this.platesForm?.get('img')?.statusChanges.subscribe((status) => {
-      console.log(status);
     });
     this.auth.userLogged$.subscribe((isLogged) => this.isLogged = isLogged);
   }
   public createNewForm(plates?: Plates) {
     this.platesForm = this.fb.group({
       name: new FormControl(plates?.name || '', [Validators.required]),
-      price: new FormControl(plates?.price ||'', [Validators.required, Validators.maxLength(3)]),
+      price: new FormControl(plates?.price ||'', [Validators.required, Validators.maxLength(3), Validators.pattern('^[0-9]*$')]),
       description: new FormControl(plates?.description ||'', [Validators.required]),
       img: new FormControl(plates?.img || '', [Validators.required]),              
       diets: new FormControl(plates?.diets || '', [Validators.required]),
     });
+    
   }
 
   public createNewPlates() {
@@ -82,7 +76,7 @@ export class PlatesCreateComponent implements OnInit{
     platesRequest.subscribe(() => {
       this.isPlatesCreate = true;
       this.platesForm?.reset();
-      this.router.navigate(['plates-list']);
+      this.router.navigate(['plate']);
     });
   }
 

@@ -47,8 +47,9 @@
                     && platesForm.get('price')?.errors?.['required']
                     "
                     class="input-error"
-                    >El valor está requerido</p>
-                    <p
+                    >El valor está requerido
+                </p>
+                <p
                     *ngIf="!platesForm.get('price')?.valid
                     && platesForm.get('price')?.touched
                     && platesForm.get('price')?.errors?.['maxlength']
@@ -56,11 +57,19 @@
                     class="input-error"
                     >El valor excede la longitud máxima, 3 carácteres
                 </p>
+                <p
+                    *ngIf="!platesForm.get('price')?.valid
+                    && platesForm.get('price')?.touched
+                    && platesForm.get('price')?.errors?.['pattern']
+                    "
+                    class="input-error"
+                    >Los Valores Requeridos son Numericos
+                </p>
             </div> 
             <div class="field-container">
                 <input
                     class="form__input"
-                    placeholder="Imagen"
+                    placeholder="Añada el http de una imagen "
                     name="img"
                     required
                     formControlName="img"

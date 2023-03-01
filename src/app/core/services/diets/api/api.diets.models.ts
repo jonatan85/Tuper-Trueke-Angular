@@ -4,6 +4,8 @@ export interface ApiDiets {
     createdAt: string;
     name: PlatesDiets;
     img: string;
+    price: string;
     description: string;
+    misPlatos: string;
     _id: string;
 }

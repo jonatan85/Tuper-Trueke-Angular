@@ -29,6 +29,7 @@ export class ApiPlatesService {
   }
 
   public editApiPlates(id: string, body: Plates): Observable<ApiPlates> {
-    return this.http.put<ApiPlates>(`${BASE_URL}/plates/${id}`, body);
+    const bodyId = {...body, _id:id }
+    return this.http.put<ApiPlates>(`${BASE_URL}/plates/${id}`, bodyId);
   }
 }

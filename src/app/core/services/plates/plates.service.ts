@@ -65,7 +65,7 @@ export class PlatesService {
   }
 
   public editPlates(id: string, body: Plates): Observable<Plates> {
-    return this.apiPlatesService.editApiPlates(id, body).pipe(
+    return this.apiPlatesService.editApiPlates(id, body).pipe(    
       map((plates) => transformPlates(plates))
     );
   }
